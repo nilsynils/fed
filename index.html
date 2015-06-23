@@ -1,9 +1,28 @@
 <html>
 <head>
     <title>FED</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
 </head>
 <body>
-<h1>FED</h1>
-<p>And in the beginning, Nils said "Let there be FED!"</p>
+<div id="content">
+
+</div>
+<script id="home" type="text/x-handlebars-template">
+    <h1>{{headline}}</h1>
+    <p>{{firstParagraph}}</p>
+</script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var source   = document.querySelector("#home").innerHTML;
+        var template = Handlebars.compile(source);
+        var context = {
+            headline: 'FED',
+            firstParagraph: 'This is the home of FED'
+        };
+        var output = template(context);
+        document.querySelector('#content').innerHTML = output;
+    }
+</script>
 </body>
 </html>
